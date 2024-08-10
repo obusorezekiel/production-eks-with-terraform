@@ -6,7 +6,7 @@ on:
       tfvars_file:
         description: 'Path to the tfvars file'
         required: true
-        default: 'variables.tfvars'
+        default: './eks/variables.tfvars'
       action:
         type: choice
         description: 'Terraform Action (plan/apply/destroy)'
