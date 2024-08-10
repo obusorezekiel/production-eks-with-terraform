@@ -6,7 +6,7 @@ on:
       tfvars_file:
         description: 'Path to the .tfvars file'
         required: true
-        default: 'variables.tfvars'
+        default: 'terraform.tfvars'
       action:
         type: choice
         description: 'Apply or Destroy'
@@ -65,12 +65,12 @@ jobs:
     steps:
     - name: Terraform Plan
       if: ${{ github.event.inputs.action == 'plan' }}
-      run: terraform plan -var-file=${{ github.event.inputs.tfvars_file }} -input=false
+      run: terraform plan
     
     - name: Terraform Apply
       if: ${{ github.event.inputs.action == 'apply' }}
-      run: terraform apply -var-file=${{ github.event.inputs.tfvars_file }} -input=false -auto-approve
+      run: terraform apply --auto-approve
     
     - name: Terraform Destroy
       if: ${{ github.event.inputs.action == 'destroy' }}
-      run: terraform destroy -var-file=${{ github.event.inputs.tfvars_file }} -input=false -auto-approve
+      run: terraform destroy --auto-approve
