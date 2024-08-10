@@ -6,7 +6,7 @@ on:
       tfvars_file:
         description: 'Path to the tfvars file'
         required: true
-        default: './eks/variables.tfvars'
+        default: 'variables.tfvars'
       action:
         type: choice
         description: 'Terraform Action (plan/apply/destroy)'
@@ -36,13 +36,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
-    - name: List Files for Debugging
-      run: |
-        echo "Listing files in the repository root:"
-        ls -la
-        echo "Listing files in the eks directory:"
-        ls -la ./eks
 
   setup-terraform:
     runs-on: ubuntu-latest
