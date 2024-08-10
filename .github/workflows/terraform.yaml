@@ -39,8 +39,7 @@ jobs:
         steps:
         - name: Checkout repository
             uses: actions/checkout@v4
-
-    
+            
     setting-up-terraform:
         runs-on: ubuntu-latest
         needs: checkout-repo
